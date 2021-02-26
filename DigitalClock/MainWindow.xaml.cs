@@ -61,12 +61,12 @@ namespace DigitalClock
 
             // Window options
             Title = "Räddningstjänst timer";
-            Width = 1920;
-            Height = 1080;
+            Width = SystemParameters.PrimaryScreenWidth;
+            Height = SystemParameters.PrimaryScreenHeight;
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.CanResizeWithGrip;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            WindowState = WindowState.Normal;
+            WindowState = WindowState.Maximized;
             Background = Brushes.Black;
 
             // Scrolling
