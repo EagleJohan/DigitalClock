@@ -27,8 +27,8 @@ namespace DigitalClock
         public DispatcherTimer asyncTimer;
 
         //Countdown sound effect
-        public SoundPlayer soundEffect = new SoundPlayer(Path.Combine(Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("bin")), @"Sounds\", "CountDown.wav"));
-
+        public SoundPlayer voiceCountDown = new SoundPlayer(Path.Combine(Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("bin")), @"Sounds\", "CountDown.wav"));
+        public SoundPlayer beepCountDown = new SoundPlayer(Path.Combine(Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("bin")), @"Sounds\", "beepCountDown.wav"));
         public double threeSegmentFontSize = 335;
         public double twoSegmentFontSize = 530;
 
@@ -216,8 +216,8 @@ namespace DigitalClock
                 colonRightLabel.Content = " ";
                 rightLabel.Content = "";
                 //Countdown
-                soundEffect.Load();
-                soundEffect.Play();
+                voiceCountDown.Load();
+                voiceCountDown.Play();
                 timer.Reset();
                 timer.SetTime(0, 11);
                 timer.Start();
@@ -236,6 +236,11 @@ namespace DigitalClock
             {
                 Console.Beep();
                 Start_Timers();
+            }
+            else if (timer.TimeLeft >= TimeSpan.FromMilliseconds(3000) && timer.TimeLeft <= TimeSpan.FromMilliseconds(3063) && leftLabel.FontSize == threeSegmentFontSize)
+            {
+                beepCountDown.Load();
+                beepCountDown.Play();
             }
         }
 
